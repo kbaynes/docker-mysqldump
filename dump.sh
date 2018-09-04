@@ -4,6 +4,7 @@ echo DB_HOST: $DB_HOST
 echo DB_USER: $DB_USER
 echo BUCKET: $BUCKET
 echo DB_NAME: $DB_NAME
+echo END_POINT: $END_POINT
 
 NOW=`date +%Y-%m-%d-%H-%M`
 FILENAME=mysql-dump.$NOW.sql
@@ -26,7 +27,7 @@ gzip /tmp/$FILENAME
 gzip /tmp/$ERRORFILE
 
 # ensure the bucket is present
-aws s3 mb s3://$BUCKET --region us-east-1
+aws s3 mb s3://$BUCKET --region us-east-1 --endpoint-url $END_POINT
 
 aws s3 cp /tmp/$FILENAME.gz s3://$BUCKET/mysql-dump/$DB_NAME/$FILENAME.gz
 aws s3 cp /tmp/$ERRORFILE.gz s3://$BUCKET/mysql-dump/$DB_NAME/$ERRORFILE.gz

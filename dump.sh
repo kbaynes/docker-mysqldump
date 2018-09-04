@@ -29,11 +29,11 @@ gzip /tmp/$ERRORFILE
 # ensure the bucket is present
 aws s3 mb s3://$BUCKET --region us-east-1 --endpoint-url $END_POINT
 
-aws s3 cp /tmp/$FILENAME.gz s3://$BUCKET/mysql-dump/$DB_NAME/$FILENAME.gz
-aws s3 cp /tmp/$ERRORFILE.gz s3://$BUCKET/mysql-dump/$DB_NAME/$ERRORFILE.gz
+aws s3 cp /tmp/$FILENAME.gz s3://$BUCKET/mysql-dump/$DB_NAME/$FILENAME.gz --endpoint-url $END_POINT
+aws s3 cp /tmp/$ERRORFILE.gz s3://$BUCKET/mysql-dump/$DB_NAME/$ERRORFILE.gz --endpoint-url $END_POINT
 
-aws s3 ls s3://$BUCKET/mysql-dump/$DB_NAME/$FILENAME.gz
-aws s3 ls s3://$BUCKET/mysql-dump/$DB_NAME/$ERRORFILE.gz
+aws s3 ls s3://$BUCKET/mysql-dump/$DB_NAME/$FILENAME.gz --endpoint-url $END_POINT
+aws s3 ls s3://$BUCKET/mysql-dump/$DB_NAME/$ERRORFILE.gz --endpoint-url $END_POINT
 
 /bin/rm -f /tmp/$FILENAME.gz
 /bin/rm -f /tmp/$ERRORFILE.gz

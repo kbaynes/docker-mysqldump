@@ -1,12 +1,4 @@
-FROM dtr.cucloud.net/cs/awscli
-
-RUN \
-  apt-get update && \
-  apt-get install -y \
-    mysql-client \
-    && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+FROM orvice/docker-mysqldump
 
 COPY dump.sh /opt/dump.sh
 RUN \

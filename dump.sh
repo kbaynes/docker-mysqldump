@@ -7,8 +7,8 @@ echo DB_NAME: $DB_NAME
 echo END_POINT: $END_POINT
 
 NOW=`date +%Y-%m-%d-%H-%M`
-FILENAME=mysql-dump.$NOW.sql
-ERRORFILE=mysql-dump.$NOW.error.log
+FILENAME=$DB_NAME.$NOW.sql
+ERRORFILE=$DB_NAME.$NOW.error.log
 
 # --add-drop-trigger is not a known option to this mysqldump when run against a
 #   5.7.11 MySQL RDS instance.

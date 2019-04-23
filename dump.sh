@@ -13,7 +13,7 @@ ERRORFILE=$DB_NAME.$NOW.error.log
 
 # creates $FILENAME.gz
 # gzip /tmp/$FILENAME
-tar -zcvf /tmp/$FILENAM $DIR 
+tar -zcvf /tmp/$FILENAME $DIR 
 
 # ensure the bucket is present
 aws s3 mb s3://$BUCKET --region us-east-1 --endpoint-url $END_POINT
